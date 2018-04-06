@@ -4,19 +4,23 @@ import PropTypes from 'prop-types';
 import Slider from 'react-native-slider';
 import Gradient from '../gradients/Gradient';
 
-const GradientSlider = ({
-  style,
-  value,
-  step,
-  maximumValue,
-  gradient,
-  onValueChange,
-  thumbTintColor
-}) => {
+const GradientSlider = (props) => {
+  const {
+    style,
+    value,
+    step,
+    maximumValue,
+    gradient,
+    onValueChange,
+    thumbTintColor,
+    thumbStyle,
+    trackStyle
+  } = props;
   return (
     <View style={[styles.container, style]}>
-      <View style={styles.gradient}>{gradient}</View>
+      <View style={[styles.gradient, trackStyle]}>{gradient}</View>
       <Slider
+        {...props}
         value={value}
         step={step}
         animateTransitions
@@ -26,7 +30,7 @@ const GradientSlider = ({
         onValueChange={onValueChange}
         minimumTrackTintColor="transparent"
         maximumTrackTintColor="transparent"
-        thumbStyle={[styles.thumb, { backgroundColor: thumbTintColor }]}
+        thumbStyle={[styles.thumb, { backgroundColor: thumbTintColor }, thumbStyle]}
       />
     </View>
   );

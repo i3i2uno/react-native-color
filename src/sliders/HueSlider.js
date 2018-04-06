@@ -5,9 +5,11 @@ import GradientSlider from './GradientSlider';
 import HueGradient from '../gradients/HueGradient';
 import tinycolor from 'tinycolor2';
 
-const HueSlider = ({ style, value, onValueChange, gradientSteps }) => {
+const HueSlider = (props) => {
+  const { style, value, onValueChange, gradientSteps } = props;
   return (
     <GradientSlider
+      {...props}
       gradient={<HueGradient gradientSteps={gradientSteps} />}
       style={style}
       step={1}
